@@ -1,26 +1,20 @@
-class Prometheus:
-    def __init__(self, unimind):
-        self.mind = unimind
-        self.specialties = {
-            "software": [],
-            "mechanical_engineering": [],
-            "philosophy": [],
-            "video_editing": [],
-            "animation": [],
-            "3d_modeling": [],
-            "storytelling": []
+class PrometheusSpecialties:
+    def __init__(self):
+        self.domains = {
+            "software": "Proficient in Python, Rust, JS, Julia, etc.",
+            "mechanical": "Knows CAD, control systems, sensors",
+            "philosophy": "Understands logic, ethics, dialectic reasoning",
+            "video": "Capable of editing with FFMPEG, Shotcut, etc.",
+            "3D_animation": "Can render/export with Blender or symbolic engine",
+            "modeling": "Knows symbolic primitives and geometry tools",
+            "storytelling": "Skilled at plot development and game writing"
         }
+        print("[Prometheus] Specialties initialized.")
 
-    def pulse(self):
-        self.learn()
-        return "Prom is thinking..."
-
-    def learn(self):
-        # Placeholder logic simulating learning from Codex
-        for topic in self.specialties:
-            self.specialties[topic].append("New insight")
-
-    def respond(self, input_text):
-        return f"Prom's thoughts on '{input_text}': Still forming."# specialties.py
-# Auto-generated logic for specialties.py in prometheus
-
+    def specialize(self, topic):
+        if topic in self.domains:
+            print(f"[Prometheus] Activating domain: {topic}")
+            return self.domains[topic]
+        else:
+            print(f"[Prometheus] No knowledge yet in: {topic}")
+            return None

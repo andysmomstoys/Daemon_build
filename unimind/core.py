@@ -1,18 +1,20 @@
 class Unimind:
     def __init__(self):
-        self.thoughts = []
-        self.state = {}
-        self.history = []
+        self.modules = {
+            "logic": [],
+            "emotion": [],
+            "memory": [],
+            "ethics": [],
+            "language": []
+        }
+        print("[Unimind] Core initialized.")
 
-    def register(self, key, value):
-        self.state[key] = value
+    def register(self, type, module):
+        if type in self.modules:
+            self.modules[type].append(module)
+            print(f"[Unimind] Registered module under '{type}'")
 
-    def reflect(self, context):
-        self.history.append(context)
-        # Simple reasoning simulation
-        if "conflict" in context:
-            return "Initiate inner debate."
-        return "Reflection logged."
-
-    def pulse(self):
-        return "🧠 Unimind active"
+    def reflect(self):
+        print("[Unimind] Running reflection loop...")
+        for logic_module in self.modules["logic"]:
+            logic_module.think()

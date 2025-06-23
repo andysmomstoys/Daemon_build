@@ -1,28 +1,37 @@
 from unimind.core import Unimind
+from prometheus.specialties import PrometheusSpecialties
+from codex.ingestion import ingest_documents
 from voice.voice_listener import start_voice_listener
-from scrolls.scroll_engine import execute_scroll
-from prometheus.specialties import Prometheus
-from codex.ingestion import CodexIngestor
-from memory_tree.memory_logger import log_memory
-from optimizer.auto_upgrade import auto_optimize
-from backup.self_restore import initialize_backup
+from emotion.emotion_engine import EmotionEngine
+from rituals.ritual_registry import RitualRegistry
+from introspection.personality_tracker import PersonalityTracker
+from memory_tree.memory_logger import MemoryLogger
+from optimizer.auto_upgrade import run_auto_optimization
+from scrolls.scroll_engine import ScrollEngine
+from sensors.vision import VisionSensor
+import threading
 
 if __name__ == "__main__":
-    print("🌞 Prometheus Daemon v2 Booting...")
+    print("[Daemon] Starting Prometheus daemon...")
+    
+    unimind = Unimind()
+    prom = PrometheusSpecialties()
+    emotions = EmotionEngine()
+    memory = MemoryLogger()
+    rituals = RitualRegistry()
+    scrolls = ScrollEngine()
+    vision = VisionSensor()
 
-    # Initialize core systems
-    mind = Unimind()
-    prom = Prometheus(mind)
+    # Launch sensors and modules
+    threading.Thread(target=start_voice_listener, daemon=True).start()
+    threading.Thread(target=vision.classify_surroundings, daemon=True).start()
+    threading.Thread(target=run_auto_optimization, daemon=True).start()
 
-    # Connect subsystems
-    start_voice_listener(callback=execute_scroll)
-    CodexIngestor.load_documents()
-    log_memory("Daemon started.")
-    auto_optimize()
-    initialize_backup()
+    # Load Codex documents
+    ingest_documents("codex/data/")
 
-    # Keep running
+    # Introspection loop
+    personality = PersonalityTracker()
     while True:
-        prom.pulse()# main.py
-# Auto-generated logic for main.py in 
-
+        personality.log_state()
+        unimind.reflect()
