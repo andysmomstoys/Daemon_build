@@ -1,3 +1,3 @@
-# Daemon v2 Origin
+# README.md
+# Auto-generated logic for README.md in 
 
-This is the foundational build of the ThothOS Daemon, including Unimind v4, Codex ingestion, and scroll-based self-coding engine.

@@ -1,5 +1,3 @@
-# Codex Ingestion Module
+# ingestion.py
+# Auto-generated logic for ingestion.py in codex
 
-class CodexIngestor:
-    def load_initial_knowledge(self):
-        print("[Codex] Loaded documents and web knowledge.")

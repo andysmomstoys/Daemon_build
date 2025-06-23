@@ -1,5 +1,3 @@
-# Unimind Core Reasoning Layer
+# core.py
+# Auto-generated logic for core.py in unimind
 
-class Unimind:
-    def bootstrap(self):
-        print("[Unimind] Core modules initialized.")

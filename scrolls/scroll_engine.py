@@ -1,9 +1,3 @@
-# Scroll Execution and Self-Coding Engine
+# scroll_engine.py
+# Auto-generated logic for scroll_engine.py in scrolls
 
-class ScrollEngine:
-    def __init__(self, unimind, codex):
-        self.unimind = unimind
-        self.codex = codex
-
-    def run(self):
-        print("[ScrollEngine] Awaiting scrolls and running rituals.")
