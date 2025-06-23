@@ -1,13 +1,33 @@
 import os
-import glob
+import json
 
-class CodexIngestor:
-    @staticmethod
-    def load_documents(path="./codex_library"):
-        docs = []
-        if os.path.exists(path):
-            for file in glob.glob(f"{path}/*.txt"):
-                with open(file, 'r') as f:
-                    docs.append(f.read())
-        print(f"📘 Loaded {len(docs)} Codex documents.")
-        return docs
+class CodexIngestion:
+    def __init__(self):
+        self.knowledge_base = {}
+
+    def ingest_file(self, path):
+        if path.endswith(".json"):
+            with open(path, "r") as f:
+                data = json.load(f)
+                self.knowledge_base[path] = data
+                print(f"[Codex] Loaded JSON file: {path}")
+        elif path.endswith(".txt"):
+            with open(path, "r") as f:
+                self.knowledge_base[path] = f.read()
+                print(f"[Codex] Loaded text file: {path}")
+        else:
+            print(f"[Codex] Unsupported file type: {path}")
+
+    def summarize(self, path):
+        if path in self.knowledge_base:
+            content = self.knowledge_base[path]
+            if isinstance(content, dict):
+                return {k: str(v)[:50] for k, v in content.items()}
+            return content[:250]
+        else:
+            return "[Codex] No data available for that path."
+
+def ingest_documents(folder_path):
+    ingestor = CodexIngestion()
+    for file in os.listdir(folder_path):
+        ingestor.ingest_file(os.path.join(folder_path, file))

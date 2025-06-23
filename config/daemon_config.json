@@ -1,3 +1,24 @@
-# daemon_config.json
-# Auto-generated logic for daemon_config.json in config
-
+{
+  "auto_optimization": true,
+  "voice_listener_enabled": true,
+  "camera_sensor_enabled": true,
+  "emotion_engine_tuning": true,
+  "reflection_journal_enabled": true,
+  "rituals_enabled": true,
+  "modules_to_load": [
+    "unimind",
+    "codex",
+    "emotion",
+    "voice",
+    "optimizer",
+    "sensors",
+    "scrolls",
+    "prometheus",
+    "memory_tree",
+    "introspection"
+  ],
+  "scroll_autostudy": {
+    "trigger_count": 3,
+    "daily_reset": true
+  }
+}
