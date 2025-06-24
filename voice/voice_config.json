@@ -1,0 +1,8 @@
+{
+  "voice_enabled": true,
+  "hotword": "Prometheus",
+  "language": "en-US",
+  "max_duration_sec": 10,
+  "ambient_noise_sensitivity": 0.7,
+  "fallback_timeout_sec": 5
+}

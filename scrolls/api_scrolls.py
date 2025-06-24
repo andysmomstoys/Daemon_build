@@ -1,28 +1,17 @@
 # scrolls/api_scrolls.py
-
 import requests
-from codex.ingestion import ingest_external_summary
 
-def fetch_weather(context):
-    location = context.get("location", "Denver")
-    response = requests.get(f"https://wttr.in/{location}?format=3")
+def fetch_weather(city):
+    response = requests.get(f"https://wttr.in/{city}?format=3")
     return response.text
 
-def fetch_news(context):
-    response = requests.get("https://api.currentsapi.services/v1/latest-news", headers={
-        "Authorization": context.get("news_api_key", "demo-key")
-    })
-    data = response.json()
-    return data.get("news", [])[:3]
+def get_news_headlines(api_key, topic="technology"):
+    url = f"https://newsapi.org/v2/top-headlines?q={topic}&apiKey={api_key}"
+    res = requests.get(url)
+    if res.status_code == 200:
+        headlines = [article['title'] for article in res.json().get('articles', [])]
+        return headlines
+    return []
 
-def summarize_url(context):
-    url = context.get("url")
-    if not url:
-        return "No URL provided."
-    return ingest_external_summary(url)
-
-available_scrolls = {
-    "weather forecast": fetch_weather,
-    "latest news": fetch_news,
-    "summon scroll summary": summarize_url
-}
+def scroll_invoke_weather(city):
+    print(f"[SCROLL] Weather Ritual: {fetch_weather(city)}")
