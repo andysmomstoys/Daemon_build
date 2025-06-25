@@ -1,4 +1,4 @@
-k# rituals/ritual_registry.py
+# rituals/ritual_registry.py
 
 from scrolls.scroll_engine import ScrollEngine
 
@@ -37,7 +37,6 @@ class RitualRegistry:
         print(f"[RitualRegistry] Ritual '{name}' registered.")
 
     def evaluate_triggers(self):
-        # Optional: iterate and auto-invoke rituals whose trigger returns True
         for name, ritual in self.dynamic_rituals.items():
             if ritual["trigger"]():
                 print(f"[RitualRegistry] Auto-invoking triggered ritual: {name}")

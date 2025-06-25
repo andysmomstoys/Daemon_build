@@ -30,3 +30,12 @@ class PersonalityTracker:
 
     def get_traits(self):
         return self.current_traits
+
+    def log_state(self):
+        timestamp = datetime.datetime.now().isoformat()
+        state_snapshot = {
+            "timestamp": timestamp,
+            "current_traits": self.current_traits
+        }
+        print(f"[PersonalityTracker] Current state: {json.dumps(state_snapshot, indent=2)}")
+        ingest_observation(f"Personality state logged: {json.dumps(self.current_traits)}")

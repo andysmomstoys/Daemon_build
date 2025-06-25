@@ -11,10 +11,10 @@ class ScrollTrigger:
     def check_and_trigger(self, condition):
         """Check if a condition matches a known scroll trigger."""
         if condition == "optimize_self":
-            self.scroll_engine.cast("optimize self")
+            self.scroll_engine.invoke("optimize self")
             self.trigger_log.append(("optimize_self", time.time()))
         elif condition == "study_topic":
-            self.scroll_engine.cast("study topic")
+            self.scroll_engine.invoke("study topic")
             self.trigger_log.append(("study_topic", time.time()))
         else:
             print(f"[ScrollTrigger] No scroll for condition: {condition}")
@@ -23,4 +23,4 @@ class ScrollTrigger:
         for word, count in word_counts.items():
             if count >= 3:
                 print(f"[ScrollTrigger] Triggering study of: {word}")
-                self.scroll_engine.cast("study topic", topic=word)
+                self.scroll_engine.invoke("study topic", topic=word)

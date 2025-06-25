@@ -1,5 +1,4 @@
 import subprocess
-import platform
 
 class LanguageBridge:
     def __init__(self):

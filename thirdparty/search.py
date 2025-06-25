@@ -1,4 +1,3 @@
-import requests
 
 def web_search(query):
     """Perform a web search using DuckDuckGo Lite"""

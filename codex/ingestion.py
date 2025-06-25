@@ -31,3 +31,11 @@ def ingest_documents(folder_path):
     ingestor = CodexIngestion()
     for file in os.listdir(folder_path):
         ingestor.ingest_file(os.path.join(folder_path, file))
+
+def ingest_observation(content):
+    """
+    Simulates ingestion of external content into the Codex system.
+    Logs or processes content for knowledge storage or symbolic study.
+    """
+    print(f"[Codex] Ingested content: {content}")
+    return f"Codex acknowledged: {content}"
